@@ -4,7 +4,8 @@ import { MinimalistComponent } from '../Minimalist/Minimalist.component';
 
 
 export const MainRoutes = [
-{ path: '', component: HomeComponent},
+{ path: 'Home', component: HomeComponent},
 { path: 'Customer', component: AppComponent},
-{ path: 'Minimalist', component: MinimalistComponent}
+{ path: 'Minimalist', component: MinimalistComponent},
+{ path: '', component: HomeComponent}
 ]
