@@ -1,0 +1,49 @@
+https://www.jenkins.io/participate/
+
+
+https://www.linkedin.com/company/jenkins-project/?miniCompanyUrn=urn%3Ali%3Afs_miniCompany%3A1846812
+
+https://stackoverflow.com/questions/69069145/using-curl-for-pushing-a-file-to-github-repository
+
+curl -X PUT -H "Authorization: token xxxxxxxxxxxxxxxxxxxx" https://api.github.com/repos/{owner}/{repo}/contents/{path}/{fileName} -d "{\"message\":\"your commit message\",\"content\":\"your file in BASE64\"}"
+
+#! /bin/bash
+ 
+cartella= " /var/myfolder "
+ 
+# update the file
+curl -i -X ​​PUT -H ' Authorization: token 4d013330xxxxxxxxxxxxxxx ' -d " { \" path \" : \" mattei.csv \" , \
+\" message \" : \" update \" , \" content \" : \" $( openssl base64 -A -in $cartella /mattei.csv ) \" , \" branch \" : \" master \" , \
+\" sha \" : $( curl -X GET https://api.github.com/repos/username/repo/contents/mattei.csv | jq .sha ) } " \
+https://api.github.com/repos/username/repo/contents/mattei.csv
+
+
+
+photoshop docker
+
+https://medium.com/@jgautheron/photoshop-in-a-docker-container-285ca0f0966c
+https://github.com/jgautheron/dockerfiles/tree/master/photoshop
+
+https://www.quora.com/Can-I-use-Photoshop-in-Docker-Container
+
+illustrator docker
+
+Wine is a Running graphical app on docker requires access to X server, Setting the environmet variable DISPLAY=:0 instructs the application to access the local X server.
+
+
+wine docker image
+unix wine-development package
+what is X server
+https://alesnosek.com/blog/2015/07/04/running-wine-within-docker/
+
+
+
+
+https://askubuntu.com/questions/7881/what-is-the-x-server
+
+
+https://github.com/Niraj-Lunavat/Artificial-Intelligence
+
+
+
+
