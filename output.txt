@@ -1,0 +1,82 @@
+NAME                                   READY   STATUS              RESTARTS   AGE     IP            NODE           NOMINATED NODE   READINESS GATES
+pod/nginx-deployment-6c5c8576d-6d8t5   0/1     ContainerCreating   0          2m45s   <none>        node01         <none>           <none>
+pod/nginx-deployment-6c5c8576d-lr56l   0/1     ContainerCreating   0          2m45s   <none>        node01         <none>           <none>
+pod/nginx-deployment-6c5c8576d-pnxp7   0/1     ContainerCreating   0          2m45s   <none>        node01         <none>           <none>
+pod/nginx-deployment-6c5c8576d-pzxpl   1/1     Running             0          2m45s   192.168.0.6   controlplane   <none>           <none>
+pod/nginx-deployment-6c5c8576d-vhllj   1/1     Running             0          2m45s   192.168.0.7   controlplane   <none>           <none>
+
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE     SELECTOR
+service/kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP          12d     <none>
+service/nginx-service   NodePort    10.106.104.120   <none>        8888:32002/TCP   2m45s   app=nginx-deploy
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS        IMAGES         SELECTOR
+deployment.apps/nginx-deployment   2/5     5            2           2m45s   nginx-container   nginx:alpine   app=nginx-deploy
+
+NAME                                         DESIRED   CURRENT   READY   AGE     CONTAINERS        IMAGES         SELECTOR
+replicaset.apps/nginx-deployment-6c5c8576d   5         5         2       2m45s   nginx-container   nginx:alpine   app=nginx-deploy,pod-template-hash=6c5c8576d
+
+ 
+<html>
+<head>
+<title> Index Page </title>
+</head>
+<body>
+<h1> Welcome to Volumes Example </h1>
+</body>
+</html>
+ 
+Name:             nginx-deployment-6c5c8576d-pnxp7
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node01/172.30.2.2
+Start Time:       Wed, 04 Jan 2023 09:20:27 +0000
+Labels:           app=nginx-deploy
+                  pod-template-hash=6c5c8576d
+Annotations:      <none>
+Status:           Pending
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/nginx-deployment-6c5c8576d
+Containers:
+  nginx-container:
+    Container ID:   
+    Image:          nginx:alpine
+    Image ID:       
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /usr/share/nginx/html/ from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5q48r (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  shared-data:
+    Type:          HostPath (bare host directory volume)
+    Path:          /tmp/html/
+    HostPathType:  Directory
+  kube-api-access-5q48r:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason       Age                  From               Message
+  ----     ------       ----                 ----               -------
+  Normal   Scheduled    4m14s                default-scheduler  Successfully assigned default/nginx-deployment-6c5c8576d-pnxp7 to node01
+  Warning  FailedMount  2m11s                kubelet            Unable to attach or mount volumes: unmounted volumes=[shared-data], unattached volumes=[shared-data kube-api-access-5q48r]: timed out waiting for the condition
+  Warning  FailedMount  4s (x10 over 4m14s)  kubelet            MountVolume.SetUp failed for volume "shared-data" : hostPath type check failed: /tmp/html/ is not a directory
