@@ -1,0 +1,36 @@
+Name:           nginx-deamonset
+Selector:       app=nginx-daemonset
+Node-Selector:  <none>
+Labels:         <none>
+Annotations:    deprecated.daemonset.template.generation: 1
+Desired Number of Nodes Scheduled: 2
+Current Number of Nodes Scheduled: 2
+Number of Nodes Scheduled with Up-to-date Pods: 2
+Number of Nodes Scheduled with Available Pods: 2
+Number of Nodes Misscheduled: 0
+Pods Status:  2 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=nginx-daemonset
+  Containers:
+   nginx-container:
+    Image:        nginx:alpine
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age    From                  Message
+  ----    ------            ----   ----                  -------
+  Normal  SuccessfulCreate  2m25s  daemonset-controller  Created pod: nginx-deamonset-g7rhq
+  Normal  SuccessfulCreate  2m25s  daemonset-controller  Created pod: nginx-deamonset-6kwfx
+ 
+NAME                        READY   STATUS    RESTARTS   AGE     IP            NODE           NOMINATED NODE   READINESS GATES
+pod/nginx-deamonset-6kwfx   1/1     Running   0          2m41s   192.168.1.3   node01         <none>           <none>
+pod/nginx-deamonset-g7rhq   1/1     Running   0          2m41s   192.168.0.6   controlplane   <none>           <none>
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   12d   <none>
+
+NAME                             DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE     CONTAINERS        IMAGES         SELECTOR
+daemonset.apps/nginx-deamonset   2         2         2       2            2           <none>          2m41s   nginx-container   nginx:alpine   app=nginx-daemonset
