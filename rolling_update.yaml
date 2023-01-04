@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: rolling-update-deployment
+ labels:
+  app: nginx_ru
+spec:
+ replicas: 5
+ selector:
+  matchLabels:
+   app: nginx_ru
+ strategy:
+  type: RollingUpdate
+  rollingUpdate:
+   maxUnavailable: 0
+   maxSurge: 1
+ template:
+  metadata:
+   labels:
+    app: nginx_ru
+  spec:
+   containers:
+   - name: nginx-container
+     image: nginx:1-alpine
+     ports:
+     - containerPort: 80
