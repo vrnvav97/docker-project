@@ -1,0 +1,40 @@
+Name:                   rolling-update-deployment
+Namespace:              default
+CreationTimestamp:      Wed, 04 Jan 2023 05:42:00 +0000
+Labels:                 app=nginx_ru
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=nginx_ru
+Replicas:               5 desired | 5 updated | 5 total | 5 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  0 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=nginx_ru
+  Containers:
+   nginx-container:
+    Image:        nginx:1-alpine
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   rolling-update-deployment-84df4ccfc7 (5/5 replicas created)
+Events:
+  Type    Reason             Age                From                   Message
+  ----    ------             ----               ----                   -------
+  Normal  ScalingReplicaSet  2m7s               deployment-controller  Scaled up replica set rolling-update-deployment-7d984cf85f to 5
+  Normal  ScalingReplicaSet  75s                deployment-controller  Scaled up replica set rolling-update-deployment-84df4ccfc7 to 1
+  Normal  ScalingReplicaSet  73s                deployment-controller  Scaled down replica set rolling-update-deployment-7d984cf85f to 4 from 5
+  Normal  ScalingReplicaSet  73s                deployment-controller  Scaled up replica set rolling-update-deployment-84df4ccfc7 to 2 from 1
+  Normal  ScalingReplicaSet  71s                deployment-controller  Scaled down replica set rolling-update-deployment-7d984cf85f to 3 from 4
+  Normal  ScalingReplicaSet  70s                deployment-controller  Scaled up replica set rolling-update-deployment-84df4ccfc7 to 3 from 2
+  Normal  ScalingReplicaSet  67s                deployment-controller  Scaled down replica set rolling-update-deployment-7d984cf85f to 2 from 3
+  Normal  ScalingReplicaSet  67s                deployment-controller  Scaled up replica set rolling-update-deployment-84df4ccfc7 to 4 from 3
+  Normal  ScalingReplicaSet  64s                deployment-controller  Scaled down replica set rolling-update-deployment-7d984cf85f to 1 from 2
+  Normal  ScalingReplicaSet  61s (x2 over 63s)  deployment-controller  (combined from similar events): Scaled down replica set rolling-update-deployment-7d984cf85f to 0 from 1
