@@ -1,0 +1,41 @@
+Name:                   nginx-deployment
+Namespace:              default
+CreationTimestamp:      Wed, 04 Jan 2023 06:32:24 +0000
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=nginx-node-selector
+Replicas:               5 desired | 5 updated | 5 total | 5 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=nginx-node-selector
+  Containers:
+   nginx-container:
+    Image:        nginx:alpine
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   nginx-deployment-85bcc9fbf5 (5/5 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  22s   deployment-controller  Scaled up replica set nginx-deployment-85bcc9fbf5 to 5
+ 
+NAME                                READY   STATUS    RESTARTS   AGE   IP             NODE     NOMINATED NODE   READINESS GATES
+nginx-deployment-85bcc9fbf5-4mdvw   1/1     Running   0          62s   192.168.1.12   node01   <none>           <none>
+nginx-deployment-85bcc9fbf5-kfwcz   1/1     Running   0          62s   192.168.1.11   node01   <none>           <none>
+nginx-deployment-85bcc9fbf5-ptd8c   1/1     Running   0          62s   192.168.1.9    node01   <none>           <none>
+nginx-deployment-85bcc9fbf5-pzqk7   1/1     Running   0          62s   192.168.1.13   node01   <none>           <none>
+nginx-deployment-85bcc9fbf5-vq82v   1/1     Running   0          62s   192.168.1.10   node01   <none>           <none>
+ 
+NAME     STATUS   ROLES    AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+node01   Ready    <none>   12d   v1.26.0   172.30.2.2    <none>        Ubuntu 20.04.5 LTS   5.4.0-131-generic   containerd://1.6.12
