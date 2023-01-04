@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ replicas: 4
+ selector:
+  matchLabels:
+   app: nginx-deployment
+ template:
+  metadata:
+   labels:
+    app: nginx-deployment
+  spec:
+   containers:
+   - name: nginx-container
+     image: nginx:alpine
+     ports:
+     - containerPort: 80
+     volumeMounts:
+     - name: shared-data
+       mountPath: /tmp/
+       readOnly: true
+   restartPolicy: Always 
+   volumes:
+   - name: shared-data
+     secret: 
+      secretName: nginx-secret
