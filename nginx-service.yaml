@@ -4,9 +4,11 @@ kind: Service
 metadata:
  name: nginx-service
 spec:
- type: ClusterIP
+ type: NodePort
  selector:
   app: nginx-app
  ports:
- - targetPort: 80
-   port: 80
+ - port: 8888 #Port Available inside cluster
+   targetPort: 80 # Target Port on which container is listening
+   nodePort: 32002 # Node Port
+ 
