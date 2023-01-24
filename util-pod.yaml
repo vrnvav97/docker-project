@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: util-pod
+ labels:
+  app: util
+spec:
+ containers:
+ - name: util-container
+   image: alpine
+   command: ["/bin/sh","-c","--"] 
+   args: ["while true; do sleep 10; done;"]
