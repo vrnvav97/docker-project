@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: ng-service
+ labels:
+  app: ninja-game
+spec:
+ selector:
+  app: ninja-game
+ type: ClusterIP
+ ports:
+ - targetPort: 80
+   port: 80
+   protocol: TCP

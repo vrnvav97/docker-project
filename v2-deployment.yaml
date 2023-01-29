@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: ninja-game-v2
+ labels:
+  app: ninja-game
+  version: v2
+spec:
+ replicas: 4
+ selector:
+  matchLabels:
+   app: ninja-game
+   version: v2
+ template:
+  metadata:
+   name: ninja-game-pod
+   labels:
+    app: ninja-game
+    version: v2
+  spec:
+   containers:
+   - name: v2-container
+     image: vrnvav123/ninja-game:v2
+     imagePullPolicy: Always
+     ports:
+     - containerPort: 80

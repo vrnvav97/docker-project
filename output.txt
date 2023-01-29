@@ -1,0 +1,3 @@
+watch ' curl http://ng-service:80 | grep Ninja Quiz V '
+
+
